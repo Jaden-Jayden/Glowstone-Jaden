@@ -4,33 +4,48 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="styles.css" />
-		<title>Glowstone Light Network</title>
+		<title>Glowstone Light Screen</title>
 	</head>
-	<body>
-		<header>
-			<h1>Glowstone Light Network</h1>
-			<p id="stats">0 light(s) ON — 0 light(s) OFF</p>
-		</header>
+	<body class="light-off">
+		<div class="opacity"></div>
+		<dialog id="menu">
+			<form id="light-form" method="dialog" novalidate>
+				<h3>Turn <code id="menu-code-status">ON</code> Light ?</h3>
+				<label for="brightness">Brightness (1 - 100)</label>
+				<input
+					type="number"
+					id="brightness"
+					name="brightness"
+					min="1"
+					max="100"
+					placeholder="50"
+					required
+				/>
+				<span id="brightness-error" class="error"></span>
+				<button type="submit">
+					<h5>Turn <span id="menu-span-status">ON</span> Light</h5>
+				</button>
+			</form>
+		</dialog>
 		<main>
-			<aside>
-				<form id="add-form" novalidate>
-					<h2>Add a light</h2>
-					<label for="light-name">Name (min. 3 characters)</label>
-					<input
-						type="text"
-						id="light-name"
-						placeholder="e.g. Living Room"
-					/>
-					<span id="name-error" class="error"></span>
-					<button type="submit">Add Light</button>
-				</form>
-				<div id="global-controls">
-					<button id="all-on">Turn All ON</button>
-					<button id="all-off">Turn All OFF</button>
-				</div>
-			</aside>
-			<section id="lights-grid"></section>
+			<section id="light-section">
+				<h1>Light Your Screen !</h1>
+				<img
+					id="glowstone"
+					src="assets/glowstone-on.webp"
+					style="filter: brightness(0%)"
+					alt="glowstone-off"
+				/>
+				<button id="light">
+					<h2>Switch Light</h2>
+				</button>
+			</section>
+			<section id="log-section">
+				<h2>Action Log</h2>
+				<ul id="log-list"></ul>
+			</section>
 		</main>
+
 		<script src="app.js"></script>
 	</body>
 </html>
